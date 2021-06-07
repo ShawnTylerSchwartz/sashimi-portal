@@ -1,0 +1,151 @@
+
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Organismal image segmentation. Automated.">
+    <meta name="author" content="Shawn Schwartz, Michael Alfaro">
+    <title>sashimi - Submit a Model</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Fontawesome CSS CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <meta name="theme-color" content="#7952b3">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="d-flex h-100 text-center text-white bg-dark">  
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+          <div>
+          <a href="index.html" style="text-decoration: none; color: #fff;"><h3 class="float-md-start mb-0"><i class="fas fa-fish"></i> <em>sashimi</em></h3></a>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="models.html">Models</a>
+              <a class="nav-link" href="https://github.com/ShawnTylerSchwartz/sashimi/blob/master/README.md" target="_blank">Features</a>
+              <a class="nav-link" href="https://github.com/ShawnTylerSchwartz/sashimi" target="_blank">GitHub</a>
+              <a class="nav-link" href="contact.html">Contact</a>
+          </nav>
+          </div>
+      </header>
+
+      <br />
+      <h1>Submit a Model.</h1>
+      <form id="model_submission" name="model_submission" method="post" action="handler.php">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+            </div>
+          </div>
+        <br />
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+          </div>
+        </div>
+        <br />
+        <div class="form-group row">
+          <label for="organsim" class="col-sm-2 col-form-label">Organism</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="organism" placeholder="Organism" required>
+          </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label for="training" class="col-sm-2 col-form-label">Training</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="training" placeholder="# of training images" required>
+            </div>
+          </div>
+        <br />
+        <div class="form-group row">
+            <label for="validation" class="col-sm-2 col-form-label">Validation</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="validation" placeholder="# of validation images" required>
+            </div>
+          </div>
+        <br />
+        <div class="form-group row">
+            <label for="model" class="col-sm-2 col-form-label">Model</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="model" placeholder="Shared link to model file (.h5)" required>
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label for="trainingannotations" class="col-sm-2 col-form-label">Training Annotations</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="trainingannotations" placeholder="Shared link to training annotations file (.json)" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="validationannotations" class="col-sm-2 col-form-label">Validation Annotations</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="validationannotations" placeholder="Shared link to validation annotations file (.json)" required>
+            </div>
+        </div>
+        <br />
+        <div class="form-group row">
+            <label for="description">Notes/description</label>
+            <textarea class="form-control" name="description" rows="3" placeholder="Please share any additional notes/descriptions that would be useful to know when reviewing this submission."></textarea>
+        </div>
+        <br />
+        <div class="form-group row">
+          <button type="submit" class="btn btn-primary">Submit Model Request</button>
+        </div>
+        <div id="error_message" style="width:100%; height:100%; display:none; ">
+          <h4>Error</h4>
+          Sorry there was an error sending your form.
+        </div>
+        <div id="success_message" style="width:100%; height:100%; display:none; ">
+          <h2>Success! Your Message was Sent Successfully.</h2>
+        </div>
+      </form>
+        <p class="lead">
+          <br />
+          <a href="models.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white">View Downloadable Models</a>
+        </p>
+      </main>
+
+      <!-- <script>
+        $("#model_submission").on("submit", function() {
+          alert("sashimi model request successfully submitted!")
+        });
+      </script> -->
+
+      <footer class="mt-auto text-white-50">
+        <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> at UCLA by <a style="font-weight: bold;" class="text-white-50" href="https://shawntylerschwartz.com" target="_blank">Shawn T. Schwartz</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
